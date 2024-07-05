@@ -3,9 +3,47 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{BACEEF1D-BE5F-44CD-9D7E-92DAD53E2267}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B1C1C982-EE25-4378-A992-90B1F5322CC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{2D0CF1A7-6AF1-4E9C-B9E8-8AE379F173F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{089E35EE-D7CA-48B2-AC67-1DC6679691BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{524D1B7F-9077-492C-8D1F-362C36C523A5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{EA6B8AD1-9DFF-4F9D-BE78-E8DCA02E9C1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{E71E4137-E207-4E62-B671-25D44B03B29B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{9CBD8AEC-9B61-4546-8CFF-6CCFAE4E091A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCarrefour.Application", "src\Services\Application\DesafioCarrefour.Application\DesafioCarrefour.Application.csproj", "{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BACEEF1D-BE5F-44CD-9D7E-92DAD53E2267} = {089E35EE-D7CA-48B2-AC67-1DC6679691BB}
+		{B1C1C982-EE25-4378-A992-90B1F5322CC9} = {089E35EE-D7CA-48B2-AC67-1DC6679691BB}
+		{2D0CF1A7-6AF1-4E9C-B9E8-8AE379F173F0} = {089E35EE-D7CA-48B2-AC67-1DC6679691BB}
+		{524D1B7F-9077-492C-8D1F-362C36C523A5} = {B1C1C982-EE25-4378-A992-90B1F5322CC9}
+		{EA6B8AD1-9DFF-4F9D-BE78-E8DCA02E9C1B} = {B1C1C982-EE25-4378-A992-90B1F5322CC9}
+		{E71E4137-E207-4E62-B671-25D44B03B29B} = {B1C1C982-EE25-4378-A992-90B1F5322CC9}
+		{9CBD8AEC-9B61-4546-8CFF-6CCFAE4E091A} = {B1C1C982-EE25-4378-A992-90B1F5322CC9}
+		{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387} = {EA6B8AD1-9DFF-4F9D-BE78-E8DCA02E9C1B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3C8E6C2-A892-4B78-9792-168C1E064E41}
