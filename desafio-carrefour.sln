@@ -19,7 +19,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infra", "Infra", "{E71E4137
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{9CBD8AEC-9B61-4546-8CFF-6CCFAE4E091A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCarrefour.Application", "src\Services\Application\DesafioCarrefour.Application\DesafioCarrefour.Application.csproj", "{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioCarrefour.Application", "src\Services\Application\DesafioCarrefour.Application\DesafioCarrefour.Application.csproj", "{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioCarrefour.Core", "src\Core\DesafioCarrefour.Core\DesafioCarrefour.Core.csproj", "{5E66E565-94E9-43BF-BB65-52A92FD4731D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioCarrefour.Domain", "src\Services\Domain\DesafioCarrefour.Domain\DesafioCarrefour.Domain.csproj", "{85424952-61D1-48BA-8E3E-61F039596BB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCarrefous.Infra", "src\Services\Infra\DesafioCarrefous.Infra\DesafioCarrefous.Infra.csproj", "{6F2B4BB6-50FB-43FF-B364-4D366A30AE07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCarrefour.Presentation", "src\Services\Presentation\DesafioCarrefour.Presentation\DesafioCarrefour.Presentation.csproj", "{49559FB2-9A9D-49C8-B5C8-50443E04DBAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +39,22 @@ Global
 		{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E66E565-94E9-43BF-BB65-52A92FD4731D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E66E565-94E9-43BF-BB65-52A92FD4731D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E66E565-94E9-43BF-BB65-52A92FD4731D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E66E565-94E9-43BF-BB65-52A92FD4731D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85424952-61D1-48BA-8E3E-61F039596BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85424952-61D1-48BA-8E3E-61F039596BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85424952-61D1-48BA-8E3E-61F039596BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85424952-61D1-48BA-8E3E-61F039596BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F2B4BB6-50FB-43FF-B364-4D366A30AE07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F2B4BB6-50FB-43FF-B364-4D366A30AE07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F2B4BB6-50FB-43FF-B364-4D366A30AE07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F2B4BB6-50FB-43FF-B364-4D366A30AE07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49559FB2-9A9D-49C8-B5C8-50443E04DBAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49559FB2-9A9D-49C8-B5C8-50443E04DBAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49559FB2-9A9D-49C8-B5C8-50443E04DBAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49559FB2-9A9D-49C8-B5C8-50443E04DBAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +68,10 @@ Global
 		{E71E4137-E207-4E62-B671-25D44B03B29B} = {B1C1C982-EE25-4378-A992-90B1F5322CC9}
 		{9CBD8AEC-9B61-4546-8CFF-6CCFAE4E091A} = {B1C1C982-EE25-4378-A992-90B1F5322CC9}
 		{9CAA75AE-21F6-4DEF-AE43-D4FAF1666387} = {EA6B8AD1-9DFF-4F9D-BE78-E8DCA02E9C1B}
+		{5E66E565-94E9-43BF-BB65-52A92FD4731D} = {BACEEF1D-BE5F-44CD-9D7E-92DAD53E2267}
+		{85424952-61D1-48BA-8E3E-61F039596BB5} = {524D1B7F-9077-492C-8D1F-362C36C523A5}
+		{6F2B4BB6-50FB-43FF-B364-4D366A30AE07} = {E71E4137-E207-4E62-B671-25D44B03B29B}
+		{49559FB2-9A9D-49C8-B5C8-50443E04DBAB} = {9CBD8AEC-9B61-4546-8CFF-6CCFAE4E091A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3C8E6C2-A892-4B78-9792-168C1E064E41}
