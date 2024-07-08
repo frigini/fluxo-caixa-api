@@ -21,7 +21,13 @@ public class PaymentsRepository(IDesafioCarrefourContext context) : IPaymentsRep
 
     public async Task<Payment> Get(string id) => await context.Payments.Find(d => d.Id == id).FirstOrDefaultAsync();
 
-    public async Task<Payment> GetByType(string type) => await context.Payments.Find(d => d.PaymentType == type).FirstOrDefaultAsync();
+    public async Task<List<Payment>> GetAllByDate(DateTime date)
+    {
+        var queryFilter = Builders<Payment>.Filter.Eq(d => d.PaymentDate, date);
+        return await context.Payments.Find(queryFilter).ToListAsync();
+    }
+
+    public async Task<Payment> GetByType(int type) => await context.Payments.Find(d => (int)d.PaymentType == type).FirstOrDefaultAsync();
 
     public async Task<bool> Update(Payment entity)
     {

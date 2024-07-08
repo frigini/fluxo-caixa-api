@@ -1,5 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 using DesafioCarrefour.Core.DomainObjects;
+using DesafioCarrefour.Domain.Entities.Enums;
 
 namespace DesafioCarrefour.Domain.Entities;
 
@@ -9,8 +10,8 @@ public partial class Payment : Entity
 
     public Payment(
         string description, 
-        DateTime paymentDate, 
-        string paymentType, 
+        DateTime paymentDate,
+        int paymentType, 
         double paymentValue)
     {
         UpdateDescription(description);
@@ -21,7 +22,7 @@ public partial class Payment : Entity
 
     public string Description { get; private set; }
     public DateTime PaymentDate { get; private set; }
-    public string PaymentType { get; private set; } //possível enum
+    public PaymentTypeEnum PaymentType { get; private set; }
     public double PaymentValue { get; private set; }
 
     public void UpdateDescription(string description)
@@ -40,15 +41,18 @@ public partial class Payment : Entity
             throw new DomainException($"Invalid payment date.");
 
         PaymentDate = paymentDate;
-        UpdatedAt = DateTime.Now;
+        UpdatedAt = todayDate;
     }
 
-    public void UpdatePaymentType(string paymentType)
+    public void UpdatePaymentType(int paymentType)
     {
-        if(string.IsNullOrEmpty(paymentType))
-            throw new DomainException($"Invalid type {paymentType} to a payment.");
+        PaymentType = paymentType switch
+        {
+            0 => PaymentTypeEnum.Debito,
+            1 => PaymentTypeEnum.Credito,
+            _ => throw new DomainException("Invalid payment type.")
+        };
 
-        PaymentType = paymentType;
         UpdatedAt = DateTime.Now;
     }
 
@@ -59,6 +63,17 @@ public partial class Payment : Entity
 
         PaymentValue = paymentValue;
         UpdatedAt = DateTime.Now;
+    }
+
+    public double CacularSaldoConsolidado(List<double> saldos)
+    {
+        double total = 0;
+        foreach(var saldo in saldos)
+        {
+            total += saldo;
+        }
+
+        return total;
     }
 
     private bool ValidateDescription(string description)
