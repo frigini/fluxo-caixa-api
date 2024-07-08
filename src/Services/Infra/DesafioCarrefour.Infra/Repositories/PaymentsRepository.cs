@@ -2,6 +2,7 @@
 using DesafioCarrefour.Application.Contracts;
 using DesafioCarrefour.Domain.Entities;
 using MongoDB.Driver;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DesafioCarrefour.Infra.Repositories;
 
@@ -20,6 +21,8 @@ public class PaymentsRepository(IDesafioCarrefourContext context) : IPaymentsRep
     }
 
     public async Task<Payment> Get(string id) => await context.Payments.Find(d => d.Id == id).FirstOrDefaultAsync();
+
+    public async Task<List<Payment>> GetAll() => await context.Payments.Find(Builders<Payment>.Filter.Empty).ToListAsync();
 
     public async Task<List<Payment>> GetAllByDate(DateTime date)
     {
