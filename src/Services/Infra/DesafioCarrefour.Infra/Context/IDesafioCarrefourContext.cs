@@ -6,5 +6,6 @@ namespace DesafioCarrefour.Infra.Context;
 public interface IDesafioCarrefourContext
 {
     IMongoCollection<Payment> Payments {  get; }
+    IMongoCollection<User> Users {  get; }
 }
 

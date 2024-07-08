@@ -1,4 +1,4 @@
-﻿using DesafioCarrefour.Application.Objects;
+﻿using DesafioCarrefour.Application.Objects.Responses;
 
 namespace DesafioCarrefour.Application.UserCases.Balance;
 

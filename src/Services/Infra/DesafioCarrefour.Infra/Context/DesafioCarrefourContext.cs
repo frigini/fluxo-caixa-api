@@ -11,8 +11,10 @@ public class DesafioCarrefourContext : IDesafioCarrefourContext
         var client = new MongoClient(settings.ConnectionString);
         var database = client.GetDatabase(settings.DatabaseName);
         Payments = database.GetCollection<Payment>(settings.PaymentsCollection);
+        Users = database.GetCollection<User>(settings.UsersCollection);
     }
 
     public IMongoCollection<Payment> Payments { get; }
+    public IMongoCollection<User> Users { get; }
 }
 

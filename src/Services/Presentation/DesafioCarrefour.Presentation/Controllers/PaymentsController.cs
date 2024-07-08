@@ -1,16 +1,19 @@
 ﻿using System.Net;
-using DesafioCarrefour.Application.Objects;
+using DesafioCarrefour.Application.Objects.Requests;
+using DesafioCarrefour.Application.Objects.Responses;
 using DesafioCarrefour.Application.UserCases.Payments;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioCarrefour.WebApi.Controllers;
 
 public class PaymentsController(IPaymentsService paymentsService) : ApiController
 {
+    [Authorize]
     [HttpPost("lancar-pagamento")]
     [ProducesResponseType(typeof(PaymentResponse), (int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult> RegisterPayment([FromBody] PaymentDto paymentDto)
+    public async Task<ActionResult> RegisterPayment([FromBody] PaymentRequest paymentDto)
     {
         var response = await paymentsService.RegisterPayment(paymentDto);
 
@@ -20,6 +23,7 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
         return CustomResponse((int)HttpStatusCode.Created, true, response);
     }
 
+    [Authorize]
     [HttpGet("[action]/{id}", Name = "buscar-lancamento")]
     [ProducesResponseType(typeof(PaymentResponse), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -33,8 +37,9 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
         return CustomResponse((int)HttpStatusCode.OK, true, response);
     }
 
+    [Authorize]
     [HttpGet("[action]", Name = "listar-lancamentos")]
-    [ProducesResponseType(typeof(PaymentResponse), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(List<PaymentResponse>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<ActionResult> GetPayments()
     {
@@ -46,8 +51,9 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
         return CustomResponse((int)HttpStatusCode.OK, true, response);
     }
 
+    [Authorize]
     [HttpGet("[action]/{referenceDate}", Name = "listar-lancamentos-por-data")]
-    [ProducesResponseType(typeof(PaymentResponse), (int)HttpStatusCode.OK)]
+    [ProducesResponseType(typeof(List<PaymentResponse>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<ActionResult> GetPaymentsByDate([FromBody] DateTime referenceDate)
     {

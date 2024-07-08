@@ -1,4 +1,4 @@
-﻿namespace DesafioCarrefour.Application.Objects;
+﻿namespace DesafioCarrefour.Application.Objects.Responses;
 
 public class BalanceResponse
 {

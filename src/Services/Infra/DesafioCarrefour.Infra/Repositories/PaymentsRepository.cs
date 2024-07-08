@@ -2,7 +2,6 @@
 using DesafioCarrefour.Application.Contracts;
 using DesafioCarrefour.Domain.Entities;
 using MongoDB.Driver;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace DesafioCarrefour.Infra.Repositories;
 

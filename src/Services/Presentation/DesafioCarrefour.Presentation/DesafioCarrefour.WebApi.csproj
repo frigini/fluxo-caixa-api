@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Local\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Core\DesafioCarrefour.Core\DesafioCarrefour.Core.csproj" />
     <ProjectReference Include="..\..\Infra\DesafioCarrefour.Infra\DesafioCarrefour.Infra.csproj" />
   </ItemGroup>

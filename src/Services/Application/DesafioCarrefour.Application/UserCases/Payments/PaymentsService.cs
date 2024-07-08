@@ -1,24 +1,16 @@
 ﻿using DesafioCarrefour.Application.Contracts;
 using DesafioCarrefour.Application.Factories;
-using DesafioCarrefour.Application.Objects;
+using DesafioCarrefour.Application.Objects.Requests;
+using DesafioCarrefour.Application.Objects.Responses;
 
 namespace DesafioCarrefour.Application.UserCases.Payments;
 
-public class PaymentsService : IPaymentsService
+public class PaymentsService(IPaymentsRepository paymentsRepository) : IPaymentsService
 {
-    private readonly IPaymentsRepository _paymentsRepository;
-
-    public PaymentsService(IPaymentsRepository paymentsRepository)
-    {
-        _paymentsRepository = paymentsRepository;
-    }
-
-    protected PaymentsService() { }
-
-    public async Task<PaymentResponse> RegisterPayment(PaymentDto paymentDto)
+    public async Task<PaymentResponse> RegisterPayment(PaymentRequest paymentDto)
     {
         var payment = paymentDto.ToDomain();
-        var paymentCreated = await _paymentsRepository.Create(payment);
+        var paymentCreated = await paymentsRepository.Create(payment);
 
         return new PaymentResponse(
             paymentCreated.Description,
@@ -30,21 +22,21 @@ public class PaymentsService : IPaymentsService
 
     public async Task<PaymentResponse> GetPayment(string id)
     {
-        var payment = await _paymentsRepository.Get(id);
+        var payment = await paymentsRepository.Get(id);
 
         return payment.ToResponse();
     }
 
     public async Task<List<PaymentResponse>> GetAll()
     {
-        var payments = await _paymentsRepository.GetAll();
+        var payments = await paymentsRepository.GetAll();
 
         return payments.ToResponse();
     }
 
     public async Task<List<PaymentResponse>> GetPaymentsByDate(DateTime referenceDate)
     {
-        var payments = await _paymentsRepository.GetAllByDate(referenceDate);
+        var payments = await paymentsRepository.GetAllByDate(referenceDate);
 
         return payments.ToResponse();
     }

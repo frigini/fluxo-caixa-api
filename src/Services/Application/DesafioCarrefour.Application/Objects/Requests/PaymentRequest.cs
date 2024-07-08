@@ -1,8 +1,8 @@
 ﻿using DesafioCarrefour.Domain.Entities.Enums;
 
-namespace DesafioCarrefour.Application.Objects;
+namespace DesafioCarrefour.Application.Objects.Requests;
 
-public class PaymentDto
+public class PaymentRequest
 {
 
     public string Description { get; set; }

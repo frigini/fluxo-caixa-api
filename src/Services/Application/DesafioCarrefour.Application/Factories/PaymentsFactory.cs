@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
-using DesafioCarrefour.Application.Objects;
+using DesafioCarrefour.Application.Objects.Requests;
+using DesafioCarrefour.Application.Objects.Responses;
 using DesafioCarrefour.Domain.Entities;
 
 namespace DesafioCarrefour.Application.Factories
 {
     public static class PaymentsFactory
     {
-        public static Payment ToDomain(this PaymentDto payment)
+        public static Payment ToDomain(this PaymentRequest payment)
         {
             return new Payment
             (
