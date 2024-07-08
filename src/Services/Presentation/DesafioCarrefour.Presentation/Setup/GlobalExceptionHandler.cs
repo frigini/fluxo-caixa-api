@@ -11,8 +11,6 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger) : IE
         {
             ArgumentNullException argumentException => (500, argumentException.Message),
             DomainException domainException => (500, domainException.Message),
-            //SqlException
-            //ValidationException validationException => (500, validationException.Message),
             _ => (500, "Something went wrong")
         };
 

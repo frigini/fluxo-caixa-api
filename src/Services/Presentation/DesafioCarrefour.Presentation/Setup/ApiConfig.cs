@@ -9,6 +9,7 @@ public static class ApiConfig
     {
         services.AddDependencyInjection();
 
+        services.AddExceptionHandler<GlobalExceptionHandler>();
         services.Configure<MongoDbSettings>(configuration.GetSection(nameof(MongoDbSettings)));
         services.AddSingleton(sp => sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
         services.AddApiVersioning();
