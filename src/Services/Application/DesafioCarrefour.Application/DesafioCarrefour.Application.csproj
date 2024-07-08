@@ -6,4 +6,17 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="UserCases\Payments\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\DesafioCarrefour.Core\DesafioCarrefour.Core.csproj" />
+    <ProjectReference Include="..\..\Domain\DesafioCarrefour.Domain\DesafioCarrefour.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -12,15 +12,16 @@
     <PackageReference Include="AspNetCore.HealthChecks.MongoDb" Version="8.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="8.0.2" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="8.0.1" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Infra\DesafioCarrefous.Infra\DesafioCarrefour.Infra.csproj" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Local\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\DesafioCarrefour.Core\DesafioCarrefour.Core.csproj" />
+    <ProjectReference Include="..\..\Infra\DesafioCarrefour.Infra\DesafioCarrefour.Infra.csproj" />
   </ItemGroup>
 
 </Project>
