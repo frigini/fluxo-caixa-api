@@ -25,9 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioCarrefour.Core", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioCarrefour.Domain", "src\Services\Domain\DesafioCarrefour.Domain\DesafioCarrefour.Domain.csproj", "{85424952-61D1-48BA-8E3E-61F039596BB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCarrefous.Infra", "src\Services\Infra\DesafioCarrefous.Infra\DesafioCarrefous.Infra.csproj", "{6F2B4BB6-50FB-43FF-B364-4D366A30AE07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioCarrefour.Infra", "src\Services\Infra\DesafioCarrefous.Infra\DesafioCarrefour.Infra.csproj", "{6F2B4BB6-50FB-43FF-B364-4D366A30AE07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioCarrefour.Presentation", "src\Services\Presentation\DesafioCarrefour.Presentation\DesafioCarrefour.Presentation.csproj", "{49559FB2-9A9D-49C8-B5C8-50443E04DBAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioCarrefour.WebApi", "src\Services\Presentation\DesafioCarrefour.Presentation\DesafioCarrefour.WebApi.csproj", "{49559FB2-9A9D-49C8-B5C8-50443E04DBAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
