@@ -49,7 +49,7 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
         return CustomResponse((int)HttpStatusCode.OK, true, response);
     }
 
-    [HttpGet("listar-lancamentos-por-data/{referenceDate}")]
+    [HttpGet("listar-lancamentos-por-data")]
     [ProducesResponseType(typeof(List<PaymentResponse>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<ActionResult> GetPaymentsByDate([FromBody] DateTime referenceDate)
