@@ -15,7 +15,7 @@ Este é um projeto de API RESTful para gerenciamento de fluxo de caixa de uma em
 - `DTO`: utilizado para transferência de dados entre as camadas.
 - `DDD`: desenvolvimento focado no domínio
 
-## ✔️ Tecnologias e bibliotecas usadas
+## Tecnologias e bibliotecas usadas
 - ``.Net 8.0``
 - ``Entity Framework Core 8.0.6``
 - ``JWT``
@@ -32,27 +32,27 @@ Este é um projeto de API RESTful para gerenciamento de fluxo de caixa de uma em
 - `GET payments/listar-lancamentos`: endpoint para listar todos os lançamentos.
 - `GET payments/listar-lancamentos-por-data?data={data}`: endpoint para listar todos os lançamentos de uma determinada data.
 
-## 🛠️ Execução do projeto
+## Execução do projeto
 Para executar o projeto, é necessário ter o Visual Studio ou o Visual Studio Code instalados.
 
-## 🚀 Como usar
+## Como usar
 Para usar a API, é necessário ter o Docker e o Docker Compose instalados.
 ## Clone o repositório:
 
 ```
 git clone https://github.com/frigini/desafio-carrefour.git
 ```
-## 📁 Entre na pasta do projeto:
+## Entre na pasta do projeto:
 ```
 cd ../desafio-carrefour
 ```
 
-## 🐳 Execute o docker-compose:
+## Execute o docker-compose:
 ```bash
 docker-compose up --build
 ```
 
-## 🔑 Autenticação por token
+## Autenticação por token
 Para utilizar as funcionalidades da API, é necessário realizar a autenticação e obter um token JWT.
 
 Endpoint de autenticação:
