@@ -69,7 +69,7 @@ A resposta será um token JWT, que deve ser incluído no header da API, no forma
 ## Testes unitários
 Para rodar os testes unitários, execute o comando abaixo:
 ```bash
-make testes
+make tests
 ```
 ## Observability
 A aplicação possui o Spring Boot Actuator configurado para expor os endpoints /health, /info e /metrics na porta 1979. 
