@@ -9,8 +9,9 @@ public static class InfraServiceColletion
 {
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
     {
-        services.AddScoped<IFluxoCaixaContext, FluxoCaixaContext>();
+        services.AddScoped<FluxoCaixaContext>();
         services.AddScoped<IPaymentsRepository, PaymentsRepository>();
+        services.AddScoped<IUsersRepository, UsersRepository>();
 
         return services;
     }

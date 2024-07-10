@@ -1,5 +1,5 @@
-﻿using FluxoCaixa.Infra.Settings;
-using Microsoft.Extensions.Options;
+﻿using FluxoCaixa.Infra.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace FluxoCaixa.WebApi.Setup;
 
@@ -9,12 +9,18 @@ public static class ApiConfig
     {
         services.AddDependencyInjection();
 
+        services.AddDbContext<FluxoCaixaContext>(options =>
+        {
+            options.UseSqlServer(configuration.GetConnectionString("SqlConnection"), opt =>
+            {
+                opt.EnableRetryOnFailure();
+            });
+        });
+
         services.AddExceptionHandler<GlobalExceptionHandler>();
-        services.Configure<MongoDbSettings>(configuration.GetSection(nameof(MongoDbSettings)));
-        services.AddSingleton(sp => sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
         services.AddApiVersioning();
         services.AddHealthChecks()
-                        .AddMongoDb(configuration["MongoDbSettings:ConnectionString"], "FluxoCaixa HealthCheck", Microsoft.Extensions.Diagnostics.HealthChecks.HealthStatus.Degraded);
+                        .AddSqlServer(configuration.GetConnectionString("SqlConnection"));
 
         return services;
     }

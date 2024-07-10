@@ -1,40 +1,37 @@
 ﻿using FluxoCaixa.Infra.Context;
 using FluxoCaixa.Application.Contracts;
 using FluxoCaixa.Domain.Entities;
-using MongoDB.Driver;
+using Microsoft.EntityFrameworkCore;
 
 namespace FluxoCaixa.Infra.Repositories;
 
-public class PaymentsRepository(IFluxoCaixaContext context) : IPaymentsRepository
+public class PaymentsRepository(FluxoCaixaContext context) : IPaymentsRepository
 {
     public async Task<Payment> Create(Payment entity)
     {
-        await context.Payments.InsertOneAsync(entity);
+        await context.Payments.AddAsync(entity);
+        await context.SaveChangesAsync();
         return entity;
     }
 
-    public async Task<bool> Delete(string id)
+    public async Task<bool> Delete(Guid id)
     {
-        var result = await context.Payments.DeleteOneAsync(d => d.Id == id);
-        return result.IsAcknowledged && result.DeletedCount > 0;
+        await context.Payments.Where(p => p.Id == id).ExecuteDeleteAsync();
+        return await context.SaveChangesAsync() > 0;
     }
 
-    public async Task<Payment> Get(string id) => await context.Payments.Find(d => d.Id == id).FirstOrDefaultAsync();
+    public async Task<Payment> Get(Guid id) => await context.Payments.FindAsync(id);
 
-    public async Task<List<Payment>> GetAll() => await context.Payments.Find(Builders<Payment>.Filter.Empty).ToListAsync();
+    public async Task<List<Payment>> GetAll() => await context.Payments.ToListAsync();
 
-    public async Task<List<Payment>> GetAllByDate(DateTime date)
-    {
-        var queryFilter = Builders<Payment>.Filter.Eq(d => d.PaymentDate, date);
-        return await context.Payments.Find(queryFilter).ToListAsync();
-    }
+    public async Task<List<Payment>> GetAllByDate(DateTime date) => await context.Payments.AsNoTracking().Where(p => p.PaymentDate == date).ToListAsync();
 
-    public async Task<Payment> GetByType(int type) => await context.Payments.Find(d => (int)d.PaymentType == type).FirstOrDefaultAsync();
+    public async Task<List<Payment>> GetByType(int type) => await context.Payments.AsNoTracking().Where(p => (int)p.PaymentType == type).ToListAsync();
 
     public async Task<bool> Update(Payment entity)
     {
-        var result = await context.Payments.ReplaceOneAsync(d => d.Id == entity.Id, entity);
-        return result.IsAcknowledged && result.ModifiedCount > 0;
+        context.Payments.Update(entity);
+        return await context.SaveChangesAsync() > 0;
     }
 }
 

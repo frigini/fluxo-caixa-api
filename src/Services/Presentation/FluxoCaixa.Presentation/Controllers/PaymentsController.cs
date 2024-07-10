@@ -13,9 +13,9 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
     [HttpPost("lancar-pagamento")]
     [ProducesResponseType(typeof(PaymentResponse), (int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
-    public async Task<ActionResult> RegisterPayment([FromBody] PaymentRequest paymentDto)
+    public async Task<ActionResult> RegisterPayment([FromBody] PaymentRequest paymentRequest)
     {
-        var response = await paymentsService.RegisterPayment(paymentDto);
+        var response = await paymentsService.RegisterPayment(paymentRequest);
 
         if (response is null)
             return CustomResponse((int)HttpStatusCode.BadRequest, false);
@@ -24,10 +24,10 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
     }
 
     //[Authorize]
-    [HttpGet("[action]/{id}", Name = "buscar-lancamento")]
+    [HttpGet("buscar-lancamento/{id}")]
     [ProducesResponseType(typeof(PaymentResponse), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
-    public async Task<ActionResult> GetPayment([FromBody] string id)
+    public async Task<ActionResult> GetPayment([FromBody] Guid id)
     {
         var response = await paymentsService.GetPayment(id);
 
@@ -38,7 +38,7 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
     }
 
     //[Authorize]
-    [HttpGet("[action]", Name = "listar-lancamentos")]
+    [HttpGet("listar-lancamentos")]
     [ProducesResponseType(typeof(List<PaymentResponse>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<ActionResult> GetPayments()
@@ -52,7 +52,7 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
     }
 
     //[Authorize]
-    [HttpGet("[action]/{referenceDate}", Name = "listar-lancamentos-por-data")]
+    [HttpGet("listar-lancamentos-por-data/{referenceDate}")]
     [ProducesResponseType(typeof(List<PaymentResponse>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<ActionResult> GetPaymentsByDate([FromBody] DateTime referenceDate)

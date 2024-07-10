@@ -12,7 +12,7 @@ public class Payment : Entity
         string description, 
         DateTime paymentDate,
         int paymentType, 
-        double paymentValue)
+        decimal paymentValue)
     {
         UpdateDescription(description);
         UpdatePaymentDate(paymentDate);
@@ -23,7 +23,9 @@ public class Payment : Entity
     public string Description { get; private set; }
     public DateTime PaymentDate { get; private set; }
     public PaymentTypeEnum PaymentType { get; private set; }
-    public double PaymentValue { get; private set; }
+    public decimal PaymentValue { get; private set; }
+
+    public const int MAX_LENGTH = 50;
 
     public void UpdateDescription(string description)
     {
@@ -56,7 +58,7 @@ public class Payment : Entity
         UpdatedAt = DateTime.Now;
     }
 
-    public void UpdatePaymentValue(double paymentValue)
+    public void UpdatePaymentValue(decimal paymentValue)
     {
         if(paymentValue < 0)
             throw new DomainException($"Invalid payment value, value must be greater than zero.");
@@ -65,9 +67,9 @@ public class Payment : Entity
         UpdatedAt = DateTime.Now;
     }
 
-    public double CacularSaldoConsolidado(List<double> saldos)
+    public decimal CacularSaldoConsolidado(List<decimal> saldos)
     {
-        double total = 0;
+        decimal total = 0;
         foreach(var saldo in saldos)
         {
             total += saldo;
@@ -83,7 +85,7 @@ public class Payment : Entity
             return false;
         }
 
-        return Regex.IsMatch(description, "^(?=.*[A-ZÀ-ÿ~])(?=.*[a-zà-ÿ~])[A-Za-zÀ-ÿ~]+$");
+        return Regex.IsMatch(description, @"[^A-Za-z0-9\ ]");
     }
 }
 

@@ -1,20 +1,29 @@
 ﻿using FluxoCaixa.Domain.Entities;
-using FluxoCaixa.Infra.Settings;
-using MongoDB.Driver;
+using Microsoft.EntityFrameworkCore;
 
 namespace FluxoCaixa.Infra.Context;
 
-public class FluxoCaixaContext : IFluxoCaixaContext
+public class FluxoCaixaContext : DbContext
 {
-    public FluxoCaixaContext(MongoDbSettings settings)
+    public FluxoCaixaContext()
     {
-        var client = new MongoClient(settings.ConnectionString);
-        var database = client.GetDatabase(settings.DatabaseName);
-        Payments = database.GetCollection<Payment>(settings.PaymentsCollection);
-        Users = database.GetCollection<User>(settings.UsersCollection);
     }
 
-    public IMongoCollection<Payment> Payments { get; }
-    public IMongoCollection<User> Users { get; }
+    public FluxoCaixaContext(DbContextOptions<FluxoCaixaContext> options) : base(options)
+    {     
+    }
+
+    public DbSet<Payment> Payments { get; set; }
+    public DbSet<User> Users { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        foreach(var property in modelBuilder.Model.GetEntityTypes().SelectMany(
+            e => e.GetProperties().Where(p => p.ClrType == typeof(string))))
+            property.SetColumnType("varchar(100)");
+
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(FluxoCaixaContext).Assembly);
+        base.OnModelCreating(modelBuilder);
+    }
 }
 

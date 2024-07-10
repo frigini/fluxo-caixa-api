@@ -5,8 +5,8 @@ namespace FluxoCaixa.Application.UserCases.Payments;
 
 public interface IPaymentsService
 {
-    Task<PaymentResponse> RegisterPayment(PaymentRequest payment);
-    Task<PaymentResponse> GetPayment(string id);
+    Task<PaymentResponse> RegisterPayment(PaymentRequest paymentRequest);
+    Task<PaymentResponse> GetPayment(Guid id);
     Task<List<PaymentResponse>> GetAll();
     Task<List<PaymentResponse>> GetPaymentsByDate(DateTime referenceDate);
 }

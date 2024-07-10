@@ -14,7 +14,7 @@ namespace FluxoCaixa.WebApi.Controllers;
 [ApiController]
 public class UsersController(IUsersService usersService, IOptions<AppSettings> appSettings) : ApiController
 {
-    [HttpPost("[action]/{request}", Name = "autenticar-usuario")]
+    [HttpPost("autenticar-usuario/{request}")]
     [ProducesResponseType(typeof(AuthenticateResponse), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<IActionResult> Authenticate(AuthenticateRequest request)
@@ -24,7 +24,7 @@ public class UsersController(IUsersService usersService, IOptions<AppSettings> a
         if (response is null)
             return CustomResponse((int)HttpStatusCode.NotFound, false);
 
-        var token = JwtProvider.GenerateJwtToken(response.Id, appSettings.Value);
+        var token = JwtProvider.GenerateJwtToken(response.Id.ToString(), appSettings.Value);
 
         response.Token = token;
 
@@ -32,7 +32,7 @@ public class UsersController(IUsersService usersService, IOptions<AppSettings> a
     }
 
     [Authorize]
-    [HttpGet("[action]", Name = "listar-usuarios")]
+    [HttpGet("listar-usuarios")]
     [ProducesResponseType(typeof(List<AuthenticateResponse>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
     public async Task<ActionResult> GetUsers()

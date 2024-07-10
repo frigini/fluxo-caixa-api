@@ -8,7 +8,7 @@ namespace FluxoCaixa.WebApi.Controllers;
 public class BalancesController(IBalanceService balanceService) : ApiController
 {
     //[Authorize]
-    [HttpGet("[action]", Name = "listar-saldo-consolidado")]
+    [HttpGet("listar-saldo-consolidado/{referenceDate}")]
     [ProducesResponseType((int)HttpStatusCode.OK)]
     public async Task<ActionResult> GetPaymentsBalanceByDate([FromBody] DateTime referenceDate)
     {

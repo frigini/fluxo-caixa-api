@@ -7,9 +7,9 @@ namespace FluxoCaixa.Application.UserCases.Payments;
 
 public class PaymentsService(IPaymentsRepository paymentsRepository) : IPaymentsService
 {
-    public async Task<PaymentResponse> RegisterPayment(PaymentRequest paymentDto)
+    public async Task<PaymentResponse> RegisterPayment(PaymentRequest paymentRequest)
     {
-        var payment = paymentDto.ToDomain();
+        var payment = paymentRequest.ToDomain();
         var paymentCreated = await paymentsRepository.Create(payment);
 
         return new PaymentResponse(
@@ -20,7 +20,7 @@ public class PaymentsService(IPaymentsRepository paymentsRepository) : IPayments
         );
     }
 
-    public async Task<PaymentResponse> GetPayment(string id)
+    public async Task<PaymentResponse> GetPayment(Guid id)
     {
         var payment = await paymentsRepository.Get(id);
 

@@ -1,6 +1,9 @@
 ﻿namespace FluxoCaixa.Application.Objects.Responses;
 
-public class BalanceResponse
+public class BalanceResponse(DateTime date, decimal consolidateBalance, decimal negativeBalance, decimal totalBalance)
 {
-    public double Balance { get; set; }
+    public DateTime Date { get; set; } = date;
+    public decimal ConsolidateBalance { get; set; } = consolidateBalance;
+    public decimal NegativeBalance { get; set; } = negativeBalance;
+    public decimal TotalBalance { get; set; } = totalBalance;
 }
