@@ -67,17 +67,6 @@ public class Payment : Entity
         UpdatedAt = DateTime.Now;
     }
 
-    public decimal CacularSaldoConsolidado(List<decimal> saldos)
-    {
-        decimal total = 0;
-        foreach(var saldo in saldos)
-        {
-            total += saldo;
-        }
-
-        return total;
-    }
-
     private bool ValidateDescription(string description)
     {
         if (string.IsNullOrEmpty(description))
@@ -85,7 +74,7 @@ public class Payment : Entity
             return false;
         }
 
-        return Regex.IsMatch(description, @"[^A-Za-z0-9\ ]");
+        return Regex.IsMatch(description, @"^[a-zA-Z0-9\ ]*$");
     }
 }
 

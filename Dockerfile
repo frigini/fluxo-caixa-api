@@ -1,7 +1,6 @@
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-ENV ASPNETCORE_URLS=http://+:32033
 WORKDIR /app
-EXPOSE 32033
+EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /source
@@ -27,13 +26,15 @@ COPY ["src/", "src/"]
 #COPY ["tests/", "tests/"]
 
 # Run migrations
-FROM build as migrations
-WORKDIR /src/Services/Infra/FluxoCaixa.Infra
-RUN dotnet tool install --version 8.0.6 --global dotnet-ef
+#FROM build as migrations
+#WORKDIR /src/Services/Infra/FluxoCaixa.Infra
+#RUN dotnet tool install --version 8.0.6 --global dotnet-ef
 #ENV PATH="$PATH:/root/.dotnet/tools"
-ENTRYPOINT dotnet ef database update --project src/Services/Infra/FluxoCaixa.Infra/FluxoCaixa.Infra.csproj --startup-project src/Services/Presentation/FluxoCaixa.Presentation/FluxoCaixa.WebApi.csproj
+#ENTRYPOINT dotnet ef database update --project src/Services/Infra/FluxoCaixa.Infra/FluxoCaixa.Infra.csproj
 
 FROM base AS final
+WORKDIR /migration
+COPY --from=migration /app/migration .
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "FluxoCaixa.WebApi.dll"]
