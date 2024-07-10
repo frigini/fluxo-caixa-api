@@ -23,7 +23,38 @@ public class FluxoCaixaContext : DbContext
             property.SetColumnType("varchar(100)");
 
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(FluxoCaixaContext).Assembly);
-        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<User>().HasData(new User("admin", "123"));
+        modelBuilder.Entity<Payment>().HasData(
+            new Payment()
+            {
+                Description = "Salário",
+                PaymentDate = DateTime.Parse("2024-07-10"),
+                PaymentType = Domain.Entities.Enums.PaymentTypeEnum.Credito, 
+                PaymentValue = 2000.0m 
+            },
+            new Payment()
+            {
+                Description = "Conta de Luz",
+                PaymentDate = DateTime.Parse("2024-07-10"),
+                PaymentType = Domain.Entities.Enums.PaymentTypeEnum.Debito,
+                PaymentValue = 200.0m
+            },
+            new Payment()
+            {
+                Description = "Assinatura streaming",
+                PaymentDate = DateTime.Parse("2024-07-10"),
+                PaymentType = Domain.Entities.Enums.PaymentTypeEnum.Debito,
+                PaymentValue = 20.0m
+            },
+            new Payment()
+            {
+                Description = "Restaurante",
+                PaymentDate = DateTime.Parse("2024-07-10"),
+                PaymentType = Domain.Entities.Enums.PaymentTypeEnum.Debito,
+                PaymentValue = 100.0m
+            }
+        );
     }
 }
 

@@ -4,6 +4,7 @@ using FluxoCaixa.Infra.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FluxoCaixa.Infra.Migrations
 {
     [DbContext(typeof(FluxoCaixaContext))]
-    partial class FluxoCaixaContextModelSnapshot : ModelSnapshot
+    [Migration("20240710040945_AddDataToTest")]
+    partial class AddDataToTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

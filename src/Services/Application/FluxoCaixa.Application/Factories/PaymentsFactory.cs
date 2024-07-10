@@ -26,6 +26,6 @@ namespace FluxoCaixa.Application.Factories
             payment.PaymentDate
         );
 
-        public static List<PaymentResponse> ToResponse(this List<Payment> payments) => payments.Select(p => p.ToResponse()).ToList();
+        public static IEnumerable<PaymentResponse> ToResponse(this IEnumerable<Payment> payments) => payments.Select(p => p.ToResponse()).ToList();
     }
 }

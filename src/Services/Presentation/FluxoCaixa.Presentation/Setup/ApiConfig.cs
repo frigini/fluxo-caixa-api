@@ -7,7 +7,7 @@ public static class ApiConfig
 {
     public static IServiceCollection AddApiConfig(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDependencyInjection();
+        services.AddDependencyInjection(configuration);
 
         services.AddDbContext<FluxoCaixaContext>(options =>
         {

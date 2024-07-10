@@ -27,14 +27,14 @@ public class PaymentsService(IPaymentsRepository paymentsRepository) : IPayments
         return payment.ToResponse();
     }
 
-    public async Task<List<PaymentResponse>> GetAll()
+    public async Task<IEnumerable<PaymentResponse>> GetAll()
     {
         var payments = await paymentsRepository.GetAll();
 
         return payments.ToResponse();
     }
 
-    public async Task<List<PaymentResponse>> GetPaymentsByDate(DateTime referenceDate)
+    public async Task<IEnumerable<PaymentResponse>> GetPaymentsByDate(DateTime referenceDate)
     {
         var payments = await paymentsRepository.GetAllByDate(referenceDate);
 

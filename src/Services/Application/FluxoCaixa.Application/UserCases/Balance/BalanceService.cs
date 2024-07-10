@@ -11,7 +11,7 @@ public class BalanceService(IPaymentsRepository paymentsRepository) : IBalanceSe
     {
         var paymentsToConsolidate = await paymentsRepository.GetAllByDate(referenceDate);
 
-        if (paymentsToConsolidate is null || paymentsToConsolidate.Count == 0)
+        if (paymentsToConsolidate is null || !paymentsToConsolidate.Any())
             return new BalanceResponse(referenceDate, 0.0m, 0.0m, 0.0m);
 
         var debits = Calculate(paymentsToConsolidate, PaymentTypeEnum.Debito);
@@ -22,7 +22,7 @@ public class BalanceService(IPaymentsRepository paymentsRepository) : IBalanceSe
         return new BalanceResponse(referenceDate, consolidatedBalance, -debits, credits);
     }
 
-    private static decimal Calculate(List<Payment> payments, PaymentTypeEnum type)
+    private static decimal Calculate(IEnumerable<Payment> payments, PaymentTypeEnum type)
     {
         return payments
             .Where(p => p.PaymentType == type)

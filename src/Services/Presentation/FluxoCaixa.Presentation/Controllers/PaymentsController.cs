@@ -1,15 +1,15 @@
-﻿using System.Net;
-using FluxoCaixa.Application.Objects.Requests;
+﻿using FluxoCaixa.Application.Objects.Requests;
 using FluxoCaixa.Application.Objects.Responses;
 using FluxoCaixa.Application.UserCases.Payments;
-using Microsoft.AspNetCore.Authorization;
+using FluxoCaixa.WebApi.Setup;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace FluxoCaixa.WebApi.Controllers;
 
+[Authorize]
 public class PaymentsController(IPaymentsService paymentsService) : ApiController
 {
-    //[Authorize]
     [HttpPost("lancar-pagamento")]
     [ProducesResponseType(typeof(PaymentResponse), (int)HttpStatusCode.Created)]
     [ProducesResponseType((int)HttpStatusCode.BadRequest)]
@@ -23,7 +23,6 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
         return CustomResponse((int)HttpStatusCode.Created, true, response);
     }
 
-    //[Authorize]
     [HttpGet("buscar-lancamento/{id}")]
     [ProducesResponseType(typeof(PaymentResponse), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -37,7 +36,6 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
         return CustomResponse((int)HttpStatusCode.OK, true, response);
     }
 
-    //[Authorize]
     [HttpGet("listar-lancamentos")]
     [ProducesResponseType(typeof(List<PaymentResponse>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -45,13 +43,12 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
     {
         var response = await paymentsService.GetAll();
 
-        if (response is null || response.Count == 0)
+        if (response is null || !response.Any())
             return CustomResponse((int)HttpStatusCode.NotFound, false);
 
         return CustomResponse((int)HttpStatusCode.OK, true, response);
     }
 
-    //[Authorize]
     [HttpGet("listar-lancamentos-por-data/{referenceDate}")]
     [ProducesResponseType(typeof(List<PaymentResponse>), (int)HttpStatusCode.OK)]
     [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -59,7 +56,7 @@ public class PaymentsController(IPaymentsService paymentsService) : ApiControlle
     {
         var response = await paymentsService.GetPaymentsByDate(referenceDate);
 
-        if (response is null || response.Count == 0)
+        if (response is null || !response.Any())
             return CustomResponse((int)HttpStatusCode.BadRequest, false);
 
         return CustomResponse((int)HttpStatusCode.OK, true, response);

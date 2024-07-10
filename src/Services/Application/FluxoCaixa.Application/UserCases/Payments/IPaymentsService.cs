@@ -7,6 +7,6 @@ public interface IPaymentsService
 {
     Task<PaymentResponse> RegisterPayment(PaymentRequest paymentRequest);
     Task<PaymentResponse> GetPayment(Guid id);
-    Task<List<PaymentResponse>> GetAll();
-    Task<List<PaymentResponse>> GetPaymentsByDate(DateTime referenceDate);
+    Task<IEnumerable<PaymentResponse>> GetAll();
+    Task<IEnumerable<PaymentResponse>> GetPaymentsByDate(DateTime referenceDate);
 }

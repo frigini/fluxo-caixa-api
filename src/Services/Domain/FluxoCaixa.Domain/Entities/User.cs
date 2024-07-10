@@ -3,10 +3,10 @@ using FluxoCaixa.Core.DomainObjects;
 
 namespace FluxoCaixa.Domain.Entities;
 
-public class User : Entity
+public class User(string username, string password) : Entity
 {
-    public string Username { get; set; }
+    public string Username { get; set; } = username;
 
     [JsonIgnore]
-    public string Password { get; set; }
+    public string Password { get; set; } = password;
 }

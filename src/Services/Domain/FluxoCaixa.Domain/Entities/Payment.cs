@@ -6,7 +6,7 @@ namespace FluxoCaixa.Domain.Entities;
 
 public class Payment : Entity
 {
-    protected Payment() { }
+    public Payment() { }
 
     public Payment(
         string description, 
@@ -20,10 +20,10 @@ public class Payment : Entity
         UpdatePaymentValue(paymentValue);
     }
 
-    public string Description { get; private set; }
-    public DateTime PaymentDate { get; private set; }
-    public PaymentTypeEnum PaymentType { get; private set; }
-    public decimal PaymentValue { get; private set; }
+    public string Description { get; set; }
+    public DateTime PaymentDate { get; set; }
+    public PaymentTypeEnum PaymentType { get; set; }
+    public decimal PaymentValue { get; set; }
 
     public const int MAX_LENGTH = 50;
 
