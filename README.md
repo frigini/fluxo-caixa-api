@@ -2,7 +2,7 @@
 Este é um projeto de API RESTful para gerenciamento de fluxo de caixa de uma empresa. Com ele, é possível cadastrar lançamentos de crédito e débito e verificar o saldo diário.
 
 ## Desenho da arquitetura
-
+https://github.com/frigini/desafio-carrefour/blob/master/SolutionDesign.drawio.png
 
 ## Padrões de microserviço utilizados
 * Separação em camadas (Core, Presentation, Application, Domain e Infra)
