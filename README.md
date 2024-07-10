@@ -49,7 +49,7 @@ cd ../desafio-carrefour
 
 ## Execute o docker-compose:
 ```bash
-docker-compose up --build
+make api
 ```
 
 ## Autenticação por token
@@ -68,9 +68,9 @@ Body:
 A resposta será um token JWT, que deve ser incluído no header da API, no formato "Bearer {token}".
 ## Testes unitários
 Para rodar os testes unitários, execute o comando abaixo:
-
-
-
+```bash
+make tests
+```
 ## Observability
 A aplicação possui o Spring Boot Actuator configurado para expor os endpoints /health, /info e /metrics na porta 1979. 
 Para acessá-los, utilize o seguinte endereço: 
