@@ -3,7 +3,7 @@ services:
     image: fluxocaixawebapi
     build:
       context: .
-      dockerfile: src/Services/Presentation/FluxoCaixa.Presentation/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - 8081:80
     depends_on:
