@@ -1,29 +1,17 @@
 services:
-  fluxo-caixa-api:
-    image: fluxo-caixa-api
+  fluxocaixawebapi:
+    image: fluxocaixawebapi
     build:
       context: .
-      dockerfile: Dockerfile
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ASPNETCORE_HTTP_PORTS=59955
+      dockerfile: src/Services/Presentation/FluxoCaixa.Presentation/Dockerfile
     ports:
-      - "599808155:80"
+      - 8081:80
     depends_on:
       - sqlserver
-  # migrations:
-  #   container_name: service-migrations
-  #   image: service-migrations
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile
-  #     target: migrations
-  #   depends_on:
-  #       - sqlserver
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2019-latest
     environment:
-      SA_PASSWORD: "desafio!123"
-      ACCEPT_EULA: "Y"
+      - SA_PASSWORD=desafio!123
+      - ACCEPT_EULA=Y
     ports:
-      - "1433:1433"
+     - "1433:1433"

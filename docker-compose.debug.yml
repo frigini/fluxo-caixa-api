@@ -1,0 +1,19 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  fluxocaixawebapi:
+    image: fluxocaixawebapi
+    build:
+      context: .
+      dockerfile: src/Services/Presentation/FluxoCaixa.Presentation/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - 8081:8081
+      - 80:80
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
