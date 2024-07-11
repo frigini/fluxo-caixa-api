@@ -72,6 +72,3 @@ Para rodar os testes unitários, execute o comando abaixo:
 ```bash
 make test
 ```
-## Observability
-A aplicação possui o Spring Boot Actuator configurado para expor os endpoints /health, /info e /metrics na porta 1979. 
-Para acessá-los, utilize o seguinte endereço: 
