@@ -47,10 +47,10 @@ git clone https://github.com/frigini/fluxo-caixa-api.git
 cd ../fluxo-caixa-api
 ```
 
-## Execute o docker-compose:
+## Execute o Makefile:
 ```bash
 make api
-http://localhost:8081
+a api estará acessível em: http://localhost:8081
 ```
 
 ## Autenticação por token
