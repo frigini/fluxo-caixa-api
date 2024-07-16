@@ -40,11 +40,11 @@ Para usar a API, é necessário ter o Docker e o Docker Compose instalados.
 ## Clone o repositório:
 
 ```
-git clone https://github.com/frigini/desafio-carrefour.git
+git clone https://github.com/frigini/fluxo-caixa-api.git
 ```
 ## Entre na pasta do projeto:
 ```
-cd ../desafio-carrefour
+cd ../fluxo-caixa-api
 ```
 
 ## Execute o docker-compose:
